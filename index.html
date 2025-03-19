@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Quiz</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quick Quiz</h1>
+        <p class="timer">Time Left: <span id="time">30</span> seconds</p>
+        
+        <div class="question" data-answer="b">
+            <p>1. What is the capital of France?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="a"> Berlin</label>
+                <label><input type="radio" name="q1" value="b"> Paris</label>
+                <label><input type="radio" name="q1" value="c"> Madrid</label>
+                <label><input type="radio" name="q1" value="d"> Rome</label>
+            </div>
+            <p class="feedback"></p>
+        </div>
+        
+        <div class="question" data-answer="c">
+            <p>2. Which planet is known as the Red Planet?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="a"> Earth</label>
+                <label><input type="radio" name="q2" value="b"> Venus</label>
+                <label><input type="radio" name="q2" value="c"> Mars</label>
+                <label><input type="radio" name="q2" value="d"> Jupiter</label>
+            </div>
+            <p class="feedback"></p>
+        </div>
+        
+        <div class="question" data-answer="d">
+            <p>3. What is 10 + 5?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="a"> 10</label>
+                <label><input type="radio" name="q3" value="b"> 12</label>
+                <label><input type="radio" name="q3" value="c"> 14</label>
+                <label><input type="radio" name="q3" value="d"> 15</label>
+            </div>
+            <p class="feedback"></p>
+        </div>
+        
+        <button id="submit">Submit</button>
+        <button id="reset">Reset</button>
+    </div>
+    <script src="script.js"></script>
+    
+</body>
+</html>
