@@ -8,6 +8,7 @@ const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("prev");
 const submitBtn = document.getElementById("submit");
 const progressBar = document.getElementById("progress-bar");
+const scoreDisplay = document.getElementById("score");
 
 showQuestion(currentQuestion);
 
@@ -28,7 +29,7 @@ function showQuestion(index) {
         q.style.display = i === index ? "block" : "none";
         if (i === index) {
             q.classList.remove("fade");
-            void q.offsetWidth; // Trigger reflow
+            void q.offsetWidth; // trigger reflow for animation
             q.classList.add("fade");
         }
     });
@@ -65,6 +66,8 @@ submitBtn.addEventListener("click", () => {
 });
 
 function submitQuiz() {
+    let score = 0;
+
     questions.forEach(question => {
         const selected = question.querySelector("input[type=radio]:checked");
         const feedback = question.querySelector(".feedback");
@@ -73,6 +76,7 @@ function submitQuiz() {
             if (selected.value === question.dataset.answer) {
                 feedback.textContent = "Correct!";
                 feedback.className = "feedback correct";
+                score++;
             } else {
                 feedback.textContent = "Incorrect!";
                 feedback.className = "feedback incorrect";
@@ -83,19 +87,24 @@ function submitQuiz() {
         }
     });
 
+    scoreDisplay.textContent = `✅ You got ${score} out of ${questions.length} correct!`;
+
     submitBtn.disabled = true;
     nextBtn.disabled = true;
     prevBtn.disabled = true;
 }
 
-document.getElementById("reset").addEventListener("click", function () {
+document.getElementById("reset").addEventListener("click", () => {
     clearInterval(timerInterval);
+
     questions.forEach(question => {
         question.querySelectorAll("input[type=radio]").forEach(input => input.checked = false);
         const feedback = question.querySelector(".feedback");
         feedback.textContent = "";
         feedback.className = "feedback";
     });
+
+    scoreDisplay.textContent = "";
 
     timeLeft = 30;
     timerElement.textContent = timeLeft;
