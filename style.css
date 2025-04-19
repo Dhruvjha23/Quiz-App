@@ -1,54 +1,108 @@
-body { 
-    font-family: Arial, sans-serif; 
-    text-align: center; 
-    background-color: #f4f4f4; 
-    margin: 0; 
-    padding: 20px;
-}
-.quiz-container { 
-    max-width: 500px; 
-    margin: auto; 
-    background: white; 
-    padding: 10px; 
-    border-radius: 10px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-    text-align: left;
-}
-.question { 
-    margin-bottom: 5px; 
-    padding: 10px; 
-    border-bottom: 1px solid #ddd; 
-}
-.question:last-child { border-bottom: none; }
-.correct { 
-    color: green; 
-    font-weight: bold; 
-}
-.incorrect { 
-    color: red; 
-    font-weight: bold; 
-}
-.options label {
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 8px;
+    min-height: 100vh;
 }
-button { 
-    background-color: #007BFF; 
-    color: white; 
-    border: none; 
-    padding: 10px 20px; 
-    margin: 5px; 
-    cursor: pointer; 
-    border-radius: 5px; 
-    font-size: 16px; 
+
+.quiz-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    overflow: hidden;
 }
-button:hover { background-color: #0056b3; }
-#reset { background-color: #dc3545; }
-#reset:hover { background-color: #a71d2a; }
-.timer { 
-    font-size: 20px;
+
+h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.timer {
+    text-align: center;
     font-weight: bold;
-    margin-bottom: 15px;
-    color: #ff0000;
+    margin-bottom: 1.5rem;
+}
+
+.progress-container {
+    background: #e0e0e0;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #4caf50;
+    transition: width 0.3s ease-in-out;
+}
+
+.question {
+    display: none;
+    animation: fadeSlide 0.4s ease-in-out forwards;
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+@keyframes fadeSlide {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.options label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.feedback {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.feedback.correct {
+    color: green;
+}
+
+.feedback.incorrect {
+    color: red;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+button {
+    flex: 1 1 auto;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
 }
